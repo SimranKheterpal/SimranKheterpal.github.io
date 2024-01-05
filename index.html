@@ -1,1 +1,78 @@
+<!DOCTYPE html>
 
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 90vh;
+      margin: 0;
+      background-color: #99ccff;
+      color: white;
+      font-family: "Barlow", Arial, sans-serif;
+    }
+
+    #countdown-container {
+      text-align: center;
+    }
+
+    #title {
+      color: #005289;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    #countdown {
+      font-size: 36px;
+    }
+      #countdownHeader {
+      font-size: 14px;
+      color: #005289
+    }
+  </style>
+<script src="chrome-extension://nngceckbapebfimnlniiiahkandclblb/content/fido2/page-script.js"></script></head>
+<body>
+  <div id="countdown-container">
+    <div id="title">Time To Kickoff</div>
+    <div id="countdown">&nbsp; &nbsp;007&nbsp; &nbsp; &nbsp;00&nbsp; &nbsp; &nbsp;39&nbsp; &nbsp; &nbsp;42&nbsp; &nbsp; &nbsp;</div>
+    <div id="countdownHeader">DAYS &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; HOURS &nbsp; &nbsp; &nbsp; MINUTES &nbsp; &nbsp; &nbsp; SECONDS</div>
+  </div>
+
+
+  <script>
+    // Set the date we're counting down to (replace with your desired date and time)
+    var countDownDate = new Date("Jan 6, 2024 12:00:00").getTime();
+
+    // Update the countdown every 1 second
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = countDownDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      // Display the countdown
+     document.getElementById("countdown").innerHTML = "&nbsp &nbsp" + 
+       (days).toString().padStart(3, "0") + "&nbsp &nbsp &nbsp" + 
+       (hours).toString().padStart(2, "0") + "&nbsp &nbsp &nbsp" + 
+       (minutes).toString().padStart(2, "0") + "&nbsp &nbsp &nbsp" + 
+       (seconds).toString().padStart(2, "0")+ "&nbsp &nbsp &nbsp";
+     document.getElementById("countdownHeader").innerHTML = "DAYS &nbsp &nbsp &nbsp &nbsp &nbsp HOURS &nbsp &nbsp &nbsp MINUTES &#160 &#160 &#160 SECONDS";
+
+      // If the countdown is over, display a message
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "EXPIRED";
+      }
+    }, 1000);
+  </script>
+
+
+<div id="forest-ext-shadow-host"><template shadowrootmode="open"><head></head><div id="root"></div></template></div></body></html>
